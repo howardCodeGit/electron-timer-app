@@ -8,7 +8,9 @@ function App(): JSX.Element {
   return (
     <>
       <TopBar />
-      <Timer />
+      <div className="bg-black bg-opacity-40 rounded-b-xl">
+        <Timer />
+      </div>
     </>
   )
 }
