@@ -12,10 +12,24 @@ export default function Timer({ isOverlay }): JSX.Element {
     let intervalId
 
     if (isActive) {
-      intervalId = setInterval(() => {}, 1000)
-    } else {
-      clearInterval(intervalId)
+      intervalId = setInterval(() => {
+        if (seconds > 0) {
+          setSeconds(seconds - 1)
+        } else if (minutes > 0) {
+          setMinutes(minutes - 1)
+          setSeconds(59)
+        } else if (hours > 0) {
+          setHours(hours - 1)
+          setMinutes(minutes - 1)
+          setSeconds(59)
+        } else {
+          // Play Audio Alarm
+          clearInterval(intervalId)
+          setIsActive(false)
+        }
+      }, 1000)
     }
+    return () => clearInterval(intervalId)
   }, [isActive, hours, minutes, seconds])
 
   return (
