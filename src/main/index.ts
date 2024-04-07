@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, globalShortcut } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -6,7 +6,7 @@ import icon from '../../resources/icon.png?asset'
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 600,
+    width: 400,
     height: 200,
     show: false,
     frame: true,
@@ -17,6 +17,17 @@ function createWindow(): void {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
     }
+  })
+
+  const toggleOverlayHotKey = 'CommandOrControl+6'
+  let isOverlayOn = false
+
+  globalShortcut.register(toggleOverlayHotKey, () => {
+    isOverlayOn = !isOverlayOn
+    mainWindow.setIgnoreMouseEvents(isOverlayOn)
+
+    mainWindow.webContents.send('overlay-model', isOverlayOn)
+    console.log('overlay', isOverlayOn)
   })
 
   mainWindow.on('ready-to-show', () => {

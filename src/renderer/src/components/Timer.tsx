@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import InputField from './InputField'
+import AlarmSound from '../assets/sounds/alarm_sound.mp3'
 
-export default function Timer({ isOverlay }): JSX.Element {
+interface TimerProps {
+  isOverlay: boolean
+}
+
+export default function Timer({ isOverlay }: TimerProps): JSX.Element {
   const [isEditing, setIsEditing] = useState<boolean>(false)
-  const [minutes, setMinutes] = useState<number>(1)
+  const [minutes, setMinutes] = useState<number>(0)
   const [seconds, setSeconds] = useState<number>(0)
   const [hours, setHours] = useState<number>(0)
   const [isActive, setIsActive] = useState<boolean>(false)
+  const audio = new Audio(AlarmSound)
 
   useEffect(() => {
     let intervalId
@@ -24,6 +30,7 @@ export default function Timer({ isOverlay }): JSX.Element {
           setSeconds(59)
         } else {
           // Play Audio Alarm
+          audio.play()
           clearInterval(intervalId)
           setIsActive(false)
         }
@@ -39,17 +46,17 @@ export default function Timer({ isOverlay }): JSX.Element {
         <div className="flex justify-center">
           <div>
             <InputField
-              label={'Hours'}
+              label={'Hours: '}
               value={hours}
               onChange={(e) => setHours(parseInt(e.target.value))}
             />
             <InputField
-              label={'Minutes'}
+              label={'Minutes: '}
               value={minutes}
               onChange={(e) => setMinutes(parseInt(e.target.value))}
             />
             <InputField
-              label={'Seconds'}
+              label={'Seconds: '}
               value={seconds}
               onChange={(e) => setSeconds(parseInt(e.target.value))}
             />
