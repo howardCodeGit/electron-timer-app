@@ -73,8 +73,17 @@ export default function Timer({ isOverlay }): JSX.Element {
           >
             {isActive ? (
               <>
-                <button>pause</button>
-                <button>stop</button>
+                <button onClick={() => setIsActive(false)}>pause</button> |
+                <button
+                  onClick={() => {
+                    setIsActive(false)
+                    setHours(0)
+                    setMinutes(0)
+                    setSeconds(0)
+                  }}
+                >
+                  stop
+                </button>
               </>
             ) : (
               <>
