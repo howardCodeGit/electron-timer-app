@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import InputField from './InputField'
 import AlarmSound from '../assets/sounds/alarm_sound.mp3'
 
@@ -76,7 +76,11 @@ export default function Timer({ isOverlay }: TimerProps): JSX.Element {
           </div>
           <div
             id="timer-buttons"
-            className="text-stone-500 flex justify-center bg-black bg-opacity-10 rounded-xl"
+            className={
+              !isOverlay
+                ? 'text-stone-500 flex justify-center bg-black bg-opacity-10 rounded-xl'
+                : 'hidden'
+            }
           >
             {isActive ? (
               <>

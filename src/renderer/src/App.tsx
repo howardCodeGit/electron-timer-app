@@ -19,7 +19,13 @@ function App(): JSX.Element {
     <>
       <div className={!isOverlay ? 'visible' : 'invisible'}>
         <TopBar />
-        <div className="bg-black bg-opacity-40 rounded-b-xl">
+        <div
+          className={
+            !isOverlay
+              ? 'bg-black bg-opacity-40 p-2 rounded-b-xl'
+              : 'bg-black bg-opacity-40 p-2 rounded-xl'
+          }
+        >
           <Timer isOverlay={isOverlay} />
         </div>
       </div>
