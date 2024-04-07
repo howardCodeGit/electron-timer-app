@@ -73,8 +73,14 @@ export default function Timer({ isOverlay }): JSX.Element {
           >
             {isActive ? (
               <>
-                <button onClick={() => setIsActive(false)}>pause</button> |
                 <button
+                  className="pause text-5xl text-yellow-500 m-2"
+                  onClick={() => setIsActive(false)}
+                >
+                  &#10073;&#10073;
+                </button>
+                <button
+                  className="stop text-5xl text-red-500 m-2"
                   onClick={() => {
                     setIsActive(false)
                     setHours(0)
@@ -82,7 +88,7 @@ export default function Timer({ isOverlay }): JSX.Element {
                     setSeconds(0)
                   }}
                 >
-                  stop
+                  &nbsp;&#9724;
                 </button>
               </>
             ) : (
@@ -94,7 +100,7 @@ export default function Timer({ isOverlay }): JSX.Element {
                   &#9658;
                 </button>
                 <button
-                  className="start text-5xl text-yellow-500 m-2"
+                  className="edit text-5xl text-yellow-500 m-2"
                   onClick={() => setIsEditing(true)}
                 >
                   &#9998;
