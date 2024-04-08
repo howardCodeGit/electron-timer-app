@@ -7,9 +7,9 @@ function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 400,
-    height: 200,
+    height: 220,
     show: false,
-    frame: true,
+    frame: false,
     transparent: true,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
@@ -26,7 +26,7 @@ function createWindow(): void {
     isOverlayOn = !isOverlayOn
     mainWindow.setIgnoreMouseEvents(isOverlayOn)
 
-    mainWindow.webContents.send('overlay-model', isOverlayOn)
+    mainWindow.webContents.send('overlay-mode', isOverlayOn)
     console.log('overlay', isOverlayOn)
   })
 

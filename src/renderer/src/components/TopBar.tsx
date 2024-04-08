@@ -20,7 +20,7 @@ export default function TopBar(): JSX.Element {
           &#128469;
         </button>
         <button id="close" onClick={handleClose}>
-          &#2715;
+          &#10006;
         </button>
       </div>
     </div>

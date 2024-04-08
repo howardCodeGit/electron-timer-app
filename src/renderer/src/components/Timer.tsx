@@ -26,7 +26,7 @@ export default function Timer({ isOverlay }: TimerProps): JSX.Element {
           setSeconds(59)
         } else if (hours > 0) {
           setHours(hours - 1)
-          setMinutes(minutes - 1)
+          setMinutes(59)
           setSeconds(59)
         } else {
           // Play Audio Alarm
