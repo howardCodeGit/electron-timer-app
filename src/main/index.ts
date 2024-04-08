@@ -6,8 +6,8 @@ import icon from '../../resources/icon.png?asset'
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 400,
-    height: 220,
+    width: 380,
+    height: 240,
     show: false,
     frame: false,
     transparent: true,
@@ -26,7 +26,7 @@ function createWindow(): void {
     isOverlayOn = !isOverlayOn
     mainWindow.setIgnoreMouseEvents(isOverlayOn)
 
-    mainWindow.webContents.send('overlay-model', isOverlayOn)
+    mainWindow.webContents.send('overlay-mode', isOverlayOn)
     console.log('overlay', isOverlayOn)
   })
 
