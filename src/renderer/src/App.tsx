@@ -1,5 +1,5 @@
-import TopBar from './components/TopBar'
 import { useEffect, useState } from 'react'
+import TopBar from './components/TopBar'
 import Timer from './components/Timer'
 
 function App(): JSX.Element {

@@ -26,7 +26,7 @@ function createWindow(): void {
     isOverlayOn = !isOverlayOn
     mainWindow.setIgnoreMouseEvents(isOverlayOn)
 
-    mainWindow.webContents.send('overlay-mode', isOverlayOn)
+    mainWindow.webContents.send('overlay-model', isOverlayOn)
     console.log('overlay', isOverlayOn)
   })
 
@@ -67,6 +67,7 @@ app.whenReady().then(() => {
   ipcMain.on('ping', () => console.log('pong'))
 
   ipcMain.on('close-window', (): void => {
+    console.log('Close window event received')
     const currentWindow = BrowserWindow.getFocusedWindow()
 
     if (currentWindow) {
@@ -75,6 +76,7 @@ app.whenReady().then(() => {
   })
 
   ipcMain.on('minimize-window', (): void => {
+    console.log('Minimize window event received')
     const currentWindow = BrowserWindow.getFocusedWindow()
 
     if (currentWindow) {

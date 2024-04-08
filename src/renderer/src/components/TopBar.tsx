@@ -13,15 +13,20 @@ export default function TopBar(): JSX.Element {
     <div>
       <div
         className="rounded-t-xl bg-blue-400 w-screen h-8"
-        style={{ WebkitAppRegion: 'drag' }}
-      ></div>
-      <div id="control buttons" className="text-stone-200 absolute top-1 right-0 pe-2">
-        <button id="minimize" onClick={handleMinimize}>
-          &#128469;
-        </button>
-        <button id="close" onClick={handleClose}>
-          &#10006;
-        </button>
+        style={{ WebkitAppRegion: 'drag' } as React.CSSProperties}
+      >
+        <div
+          id="control-buttons"
+          className="text-stone-200 absolute top-1 right-0 pe-2"
+          style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}
+        >
+          <button id="minimize" onClick={handleMinimize}>
+            &#128469;
+          </button>
+          <button id="close" onClick={handleClose}>
+            &#10006;
+          </button>
+        </div>
       </div>
     </div>
   )

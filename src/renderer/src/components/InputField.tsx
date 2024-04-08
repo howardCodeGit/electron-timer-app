@@ -1,5 +1,4 @@
-import { Input } from 'electron'
-import React, { ChangeEventHandler } from 'react'
+import { ChangeEventHandler } from 'react'
 
 interface InputFieldProps {
   label: string

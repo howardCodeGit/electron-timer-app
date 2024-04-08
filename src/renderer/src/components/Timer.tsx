@@ -43,7 +43,7 @@ export default function Timer({ isOverlay }: TimerProps): JSX.Element {
     <>
       {isEditing ? (
         // Time Setup
-        <div className="flex justify-center">
+        <div className="flex justify-center text-stone-200">
           <div>
             <InputField
               label={'Hours: '}
